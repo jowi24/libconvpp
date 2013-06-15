@@ -29,11 +29,11 @@ class CharsetConverter {
 private:
 	iconv_t conv;
 	bool ignoreError;
-	std::string getDefaultCharset();
 public:
 	CharsetConverter(const std::string& fromEncoding, const std::string& toEncoding = "", bool ignoreError = true);
 	~CharsetConverter();
 	std::string convert(const std::string& input) const;
+	static std::string GetDefaultCharset();
 	static std::string ConvertToLocalEncoding(const std::string &input, const std::string &encoding);
 };
 

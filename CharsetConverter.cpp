@@ -31,7 +31,7 @@ namespace convert {
 
 CharsetConverter::CharsetConverter(const std::string& fromEncoding, const std::string& toEncoding, bool ignoreError)
 : ignoreError{ignoreError} {
-	conv = iconv_open(toEncoding.length() ? toEncoding.c_str() : getDefaultCharset().c_str(), fromEncoding.c_str());
+	conv = iconv_open(toEncoding.length() ? toEncoding.c_str() : GetDefaultCharset().c_str(), fromEncoding.c_str());
 	if (conv == (iconv_t)-1) {
 		if (errno == EINVAL)
 			throw std::runtime_error("Unsupported conversion from " + toEncoding + " to " + fromEncoding);
@@ -83,7 +83,7 @@ std::string CharsetConverter::ConvertToLocalEncoding(const std::string &input, c
 }
 
 
-std::string CharsetConverter::getDefaultCharset() {
+std::string CharsetConverter::GetDefaultCharset() {
 	if (setlocale(LC_CTYPE, ""))
 		return nl_langinfo(CODESET);
 	char *langPtr = getenv("LANG");

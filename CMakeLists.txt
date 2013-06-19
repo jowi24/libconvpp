@@ -11,7 +11,7 @@ project (lib${LIBNAME})
 
 # --- compile and link --------------------------------------------------------
 include_directories(${lib${LIBNAME}_SOURCE_DIR})
-set(CMAKE_CXX_FLAGS "-std=gnu++11 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
 add_library(${LIBNAME} STATIC ${SRCS})
 

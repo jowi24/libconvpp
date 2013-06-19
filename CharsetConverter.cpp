@@ -26,6 +26,8 @@
 #include <sys/types.h>
 
 #include <vector>
+#include <cerrno> 
+#include <cstdlib>
 
 namespace convert {
 
